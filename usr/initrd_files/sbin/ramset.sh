@@ -28,6 +28,8 @@ fi;
 
 /voodoo/bin/remount_system_ro
 
+source /sbin/ram.presets.conf
+
 eval export set RAMSET_ADJ_1=\${"PRESET_${PRESET}_ADJ_1"}
 eval export set RAMSET_ADJ_2=\${"PRESET_${PRESET}_ADJ_2"}
 eval export set RAMSET_ADJ_3=\${"PRESET_${PRESET}_ADJ_3"}
@@ -52,8 +54,8 @@ eval export set RAMSET_ADJ=\${"PRESET_${PRESET}_ADJ"}
 eval export set RAMSET_MINFREE=\${"PRESET_${PRESET}_MINFREE"}
 
 eval export set RAMSET_ZRAM_ENABLED=\${"PRESET_${PRESET}_ZRAM_ENABLED"}
+eval export set RAMSET_ZRAM_SIZE=\${"PRESET_${PRESET}_ZRAM_SIZE"}
 eval export set RAMSET_SWAPPINESS=\${"PRESET_${PRESET}_SWAPPINESS"}
-eval export set RAMSET_ZCACHE_MEMLIMIT=\${"PRESET_${PRESET}_ZCACHE_MEMLIMIT"}
 
 setprop ro.FOREGROUND_APP_ADJ $RAMSET_ADJ_1
 setprop ro.VISIBLE_APP_ADJ $RAMSET_ADJ_2
@@ -88,7 +90,7 @@ if [ $RAMSET_ZRAM_ENABLED == "1" ]; then
    /bin/insmod /lib/modules/lzo_decompress.ko
  fi;
  /bin/insmod /lib/modules/zram.ko num_devices=1
- /sbin/zramconfig /dev/block/zram0 --disksize_kb 262144
+ /sbin/zramconfig /dev/block/zram0 --disksize_kb `expr $RAMSET_ZRAM_SIZE \* 1024`
  /sbin/zramconfig /dev/block/zram0 --init
  mkswap /dev/block/zram0
  swapon /dev/block/zram0
