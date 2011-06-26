@@ -784,6 +784,5 @@ service tvout /system/bin/tvoutserver
      user system
      group graphics
 
-service run_parts /voodoo/scripts/run-parts.sh /system/etc/init.d
-  oneshot 
-
+service post_boot /sbin/post-boot.sh
+     oneshot
