@@ -92,7 +92,6 @@ if [ $RAMSET_ZRAM_ENABLED == "1" ]; then
  /sbin/zramconfig /dev/block/zram0 --init
  mkswap /dev/block/zram0
  swapon /dev/block/zram0
- setprop persist.tweak.vm.swappiness disabled
 fi;
 
 echo $RAMSET_SWAPPINESS > /proc/sys/vm/swappiness
