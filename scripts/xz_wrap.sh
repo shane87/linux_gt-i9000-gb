@@ -20,4 +20,5 @@ case $ARCH in
 	sparc)          BCJ=--sparc ;;
 esac
 
-exec xz --check=crc32 $BCJ --lzma2=$LZMA2OPTS,dict=32MiB
+exec xz --check=crc32 $BCJ --lzma2=dict=32MiB
+#My build environment does not have/need any lzma2opts, and the empty string causes build issues, so remove the empty veriable
