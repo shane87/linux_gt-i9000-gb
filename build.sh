@@ -7,9 +7,11 @@ if ! [ -e .config ]; then
 fi
 
 # Linaro Android 4.5 (GCC 4.5.4) toolchain - http://www.linaro.org
-export CROSS_COMPILE="/opt/toolchains/android-toolchain-eabi-4.5/bin/arm-eabi-"
+#export CROSS_COMPILE="/opt/toolchains/android-toolchain-eabi-4.5/bin/arm-eabi-"
+#^^^Not needed, I export CROSS_COMPILE before begining work, and this undoes my changes
 
-export KBUILD_BUILD_VERSION="0.4.3-talon-dev"
+export KBUILD_BUILD_VERSION="s87-t6.2-talon-dev"
+#changed to my personal build version
 
 #export LOCALVERSION="-I9000XWJVB-CL118186"
 #export LOCALVERSION="-I9000XWJVH-CL184813"
