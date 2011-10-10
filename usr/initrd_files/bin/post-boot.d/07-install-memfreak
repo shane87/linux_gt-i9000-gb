@@ -1,6 +1,6 @@
 #!/bin/sh
 
-filename="memoryfreak-1.21b.apk"
+filename="memoryfreak-1.22b.apk"
 
 if ! test -e /data/app/$filename; then
  rm /data/app/*memoryfreak*
