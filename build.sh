@@ -10,7 +10,7 @@ fi
 #export CROSS_COMPILE="/opt/toolchains/android-toolchain-eabi-4.5/bin/arm-eabi-"
 #^^^Not needed, I export CROSS_COMPILE before begining work, and this undoes my changes
 
-export KBUILD_BUILD_VERSION="s87-t6.2-talon-dev"
+export KBUILD_BUILD_VERSION="s87-t7-talon-dev"
 #changed to my personal build version
 
 #export LOCALVERSION="-I9000XWJVB-CL118186"
