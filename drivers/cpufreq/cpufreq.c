@@ -30,6 +30,8 @@
 #include <linux/mutex.h>
 #include <linux/earlysuspend.h>
 
+#include <mach/voltages.h>
+
 #define dprintk(msg...) cpufreq_debug_printk(CPUFREQ_DEBUG_CORE, \
 						"cpufreq-core", msg)
 
@@ -39,6 +41,12 @@ int enabled_freqs[5] = { 1, 1, 1, 1, 1 };
 #ifdef CONFIG_GPU_OC
 extern unsigned int gpu[5][2];
 #endif
+
+// int cpufreq_cur_max - will be filled with the current max cpu frequency
+// hopefully this will allow the deep sleep patch to scale back to the proper
+// frequency after waking from sleep
+// *set to compiled in max frequency to prevent warnings about un-initialized variables
+int cpufreq_cur_max = TOPCPUFREQUENCY;
 
 /**
  * The "cpufreq driver" - the arch- or hardware-dependent low
@@ -2096,6 +2104,8 @@ static void powersave_early_suspend(struct early_suspend *handler)
 			return;
 		if (cpufreq_get_policy(&new_policy, cpu))
 			goto out;
+//just before setting up the new policy, we will save the max freq from the old policy
+		cpufreq_cur_max = cpu_policy->user_policy.max;
 		new_policy.max = 800000;
 		new_policy.min = 100000;
 		__cpufreq_set_policy(cpu_policy, &new_policy);
@@ -2118,7 +2128,8 @@ static void powersave_late_resume(struct early_suspend *handler)
 			return;
 		if (cpufreq_get_policy(&new_policy, cpu))
 			goto out;
-		new_policy.max = 1000000;
+//use cpufreq_cur_max to reset the correct max frequency when awakening
+		new_policy.max = cpufreq_cur_max;
 		new_policy.min = 200000;
 		__cpufreq_set_policy(cpu_policy, &new_policy);
 		cpu_policy->user_policy.policy = cpu_policy->policy;
