@@ -2118,7 +2118,21 @@ static void powersave_late_resume(struct early_suspend *handler)
 			return;
 		if (cpufreq_get_policy(&new_policy, cpu))
 			goto out;
+#ifdef CONFIG_CPU_UV
 		new_policy.max = 1000000;
+#endif
+#ifdef CONFID_CPU_1200
+		new_policy.max = 1200000;
+#endif
+#ifdef CONFIG_CPU_1300
+		new_policy.max = 1300000;
+#endif
+#ifdef CONFIG_CPU_1400
+		new_policy.max = 1400000;
+#endif
+#ifdef CONFIG_CPU_1440
+		new_policy.max = 1440000;
+#endif
 		new_policy.min = 200000;
 		__cpufreq_set_policy(cpu_policy, &new_policy);
 		cpu_policy->user_policy.policy = cpu_policy->policy;
