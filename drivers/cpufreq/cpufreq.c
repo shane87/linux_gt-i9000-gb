@@ -46,7 +46,7 @@ extern unsigned int gpu[5][2];
 // hopefully this will allow the deep sleep patch to scale back to the proper
 // frequency after waking from sleep
 // *set to compiled in max frequency to prevent warnings about un-initialized variables
-int cpufreq_cur_max = TOPCPUFREQUENCY;
+int cpufreq_cur_max;
 
 /**
  * The "cpufreq driver" - the arch- or hardware-dependent low

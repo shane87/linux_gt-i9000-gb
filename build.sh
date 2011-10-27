@@ -40,6 +40,12 @@ cd drivers/misc/samsung_modemctl
 make
 cd ../../..
 
+# Compile seperate overclock module, must be compiled with CodeSourcery 2009q3
+cd sema_mod/
+make ARCH=arm CROSS_COMPILE=/opt/toolchains/arm-2009q3/bin/arm-none-eabi-
+cp semaphore_oc.ko ../usr/initrd_files/lib/modules/
+cd ..
+
 make -j`grep 'processor' /proc/cpuinfo | wc -l`
 cp arch/arm/boot/zImage releasetools
 cd releasetools

@@ -115,6 +115,8 @@ loglevel 3
     # ko files for bthid
     insmod /lib/modules/bthid.ko
 
+    insmod /lib/modules/cpufreq_stats.ko
+
     #temp
     chown root root /sbin/fat.format
     chmod 750 /sbin/fat.format
