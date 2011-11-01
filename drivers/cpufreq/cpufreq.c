@@ -46,7 +46,7 @@ extern unsigned int gpu[5][2];
 // hopefully this will allow the deep sleep patch to scale back to the proper
 // frequency after waking from sleep
 // *set to compiled in max frequency to prevent warnings about un-initialized variables
-int cpufreq_cur_max = TOPCPUFREQUENCY;
+int cpufreq_cur_max;
 
 /**
  * The "cpufreq driver" - the arch- or hardware-dependent low
@@ -2107,7 +2107,7 @@ static void powersave_early_suspend(struct early_suspend *handler)
 //just before setting up the new policy, we will save the max freq from the old policy
 		cpufreq_cur_max = cpu_policy->user_policy.max;
 		new_policy.max = 800000;
-		new_policy.min = 100000;
+		//new_policy.min = 100000;
 		__cpufreq_set_policy(cpu_policy, &new_policy);
 		cpu_policy->user_policy.policy = cpu_policy->policy;
 		cpu_policy->user_policy.governor = cpu_policy->governor;
@@ -2130,7 +2130,7 @@ static void powersave_late_resume(struct early_suspend *handler)
 			goto out;
 //use cpufreq_cur_max to reset the correct max frequency when awakening
 		new_policy.max = cpufreq_cur_max;
-		new_policy.min = 200000;
+		//new_policy.min = 200000;
 		__cpufreq_set_policy(cpu_policy, &new_policy);
 		cpu_policy->user_policy.policy = cpu_policy->policy;
 		cpu_policy->user_policy.governor = cpu_policy->governor;

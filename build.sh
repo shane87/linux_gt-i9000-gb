@@ -29,7 +29,7 @@ if [ -e ./usr/initrd_files/lib/modules ]; then
  rm -rf ./usr/initrd_files/lib/modules
 fi
 
-mkdir ./usr/initrd_files/lib/modules
+mkdir -p ./usr/initrd_files/lib/modules
 
 for i in `find mod_inst -name "*.ko"`; do
  cp $i ./usr/initrd_files/lib/modules/
