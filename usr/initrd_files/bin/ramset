@@ -30,8 +30,11 @@ if test -e /data/local.prop;then
   exit
  fi
  /system/xbin/busybox grep -v _APP_ /data/local.prop > /data/local.prop.tmp
- /system/xbin/busybox grep -v SECONDARY_SERVER_ /data/local.prop.tmp > /data/local.prop
+ /system/xbin/busybox grep -v SECONDARY_SERVER_ /data/local.prop.tmp > /data/local.prop.tmp2
+ /system/xbin/busybox grep -v CONTENT_PROVIDER_ /data/local.prop.tmp2 > /data/local.prop
  rm /data/local.prop.tmp 
+ rm /data/local.prop.tmp2 
+
 fi
                                                     
 echo ro.FOREGROUND_APP_ADJ=$FOREGROUND_APP_ADJ >> /data/local.prop
@@ -51,6 +54,7 @@ echo ro.SECONDARY_SERVER_MEM=$SECONDARY_SERVER_MEM >> /data/local.prop
 echo ro.BACKUP_APP_MEM=$BACKUP_APP_MEM >> /data/local.prop            
 echo ro.HOME_APP_MEM=$HOME_APP_MEM >> /data/local.prop                
 echo ro.HIDDEN_APP_MEM=$HIDDEN_APP_MEM >> /data/local.prop            
+echo ro.CONTENT_PROVIDER_MEM=$CONTENT_PROVIDER_MEM >> /data/local.prop            
 echo ro.EMPTY_APP_MEM=$EMPTY_APP_MEM >> /data/local.prop              
                                                                       
 if test -e /system/etc/init.d/_99ramset; then                 
