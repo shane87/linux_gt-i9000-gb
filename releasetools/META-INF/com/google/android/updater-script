@@ -41,6 +41,8 @@ delete("/system/etc/init.d/03sdcardspeedfix");
 delete("/system/etc/init.d/04kerneltweaks");
 delete("/system/etc/init.d/05sysctltweaks");
 delete("/system/etc/init.d/S50_ocmod");
+delete("/system/etc/init.d/enable_oc_1200");
+delete("/system/etc/init.d/enable_oc_1300");
 show_progress(0.100000, 60);
 ui_print(" ");
 ui_print("DONE! ");
