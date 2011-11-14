@@ -1,5 +1,5 @@
 # ram.conf: settings file for use with ramset -kodos 
-RAM_CONF_VERSION=6.1 # Do not edit this
+RAM_CONF_VERSION=6.2 # Do not edit this
 #
 # This file controls various tweakable aspects of how your system manages its
 # memory usage, including LowMemoryKiller behavior, ZRAM/compcache (i.e. 
@@ -37,9 +37,9 @@ BACKUP_APP_MEM=8960
 HOME_APP_MEM=5120
 HIDDEN_APP_MEM=10240
 CONTENT_PROVIDER_MEM=11520
-EMPTY_APP_MEM=15360
+EMPTY_APP_MEM=12800
 LMK_ADJ="0,1,3,5,7,15"
-LMK_MINFREE="1280,2560,5120,7680,10240,15360"
+LMK_MINFREE="1280,2560,5120,7680,10240,12800"
 ZRAM_SIZE=160
 SWAPPINESS=60
 
