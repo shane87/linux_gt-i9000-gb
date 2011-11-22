@@ -2,6 +2,9 @@
 # Written by Evan alias ytt3r
 # modified by kodos96
 
+MODVER="s87"
+BUILDVER="3.1.3"
+
 if ! [ -e .config ]; then
  make $1
 fi
@@ -10,7 +13,7 @@ fi
 #export CROSS_COMPILE="/opt/toolchains/android-toolchain-eabi-4.5/bin/arm-eabi-"
 #^^^Not needed, I export CROSS_COMPILE before begining work, and this undoes my changes
 
-export KBUILD_BUILD_VERSION="s87-t7-talon-dev"
+export KBUILD_BUILD_VERSION=$MODVER"."$BUILDVER"-talon-dev"
 #changed to my personal build version
 
 #export LOCALVERSION="-I9000XWJVB-CL118186"
@@ -46,6 +49,7 @@ make -j`grep 'processor' /proc/cpuinfo | wc -l`
 cp arch/arm/boot/zImage releasetools
 cd releasetools
 rm -f *.zip
-zip -r Talon *
+zip -r TalonDEV-$MODVER.$BUILDVER.zip *
 cd ..
+cp releasetools/TalonDEV-$MODVER.$BUILDVER.zip /home/shane87/kernel-packages/TalonDEV-$MODVER.$BUILDVER-BIGMEM.zip
 echo "Finished."
