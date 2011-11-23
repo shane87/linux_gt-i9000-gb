@@ -219,8 +219,10 @@ static ssize_t oc_store(struct device *dev, struct device_attribute *attr, const
 			s5pv210_change_high_1120();
 		} else if (oc == 2) {
 			s5pv210_change_high_1200();
-		} else {
+		} else if (oc == 3) {
 			s5pv210_change_high_1300();
+		} else {
+			s5pv210_change_high_1400();
 		}
 	}
  	return size;
@@ -975,6 +977,37 @@ finish:
 
 	return cpufreq_register_driver(&s5pv210_cpufreq_driver);
 }
+
+void s5pv210_change_high_1400(void)
+{
+	struct cpufreq_policy *policy;
+        
+	oc_freq = 1400;
+
+        freq_uv_table[0][0] = oc_freq * 1000;
+        freq_uv_table[0][1] = 1375;
+        freq_uv_table[0][2] = 1375;
+
+        freq_table[L0].frequency = oc_freq * 1000;
+
+        clk_info[L0].fclk       = oc_freq * 1000;
+        clk_info[L0].armclk      = oc_freq * 1000;
+
+        dvs_conf[L0].arm_volt   = 1375000;
+
+        clkdiv_val[0][1] = 5;
+        clkdiv_val[0][2] = 5;
+
+	
+	policy = cpufreq_cpu_get(0);
+	if (policy == NULL)
+		return;
+
+	policy->max = 1400000;
+
+	policy->cpuinfo.max_freq = 1400000;
+}
+EXPORT_SYMBOL(s5pv210_change_high_1400);
 
 void s5pv210_change_high_1300(void)
 {

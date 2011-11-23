@@ -66,4 +66,5 @@ void s5pv210_change_high_1000(void);
 void s5pv210_change_high_1120(void);
 void s5pv210_change_high_1200(void);
 void s5pv210_change_high_1300(void);
+void s5pv210_change_high_1400(void);
 #endif /* __ASM_ARCH_CPU_FREQ_H */
