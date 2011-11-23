@@ -3,7 +3,7 @@
 # modified by kodos96
 
 MODVER="s87"
-BUILDVER="3.1.4"
+BUILDVER="0.3.2"
 
 if ! [ -e .config ]; then
  make $1
