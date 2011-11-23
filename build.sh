@@ -3,7 +3,7 @@
 # modified by kodos96
 
 MODVER="s87"
-BUILDVER="3.1.3"
+BUILDVER="3.1.4"
 
 if ! [ -e .config ]; then
  make $1
@@ -13,7 +13,7 @@ fi
 #export CROSS_COMPILE="/opt/toolchains/android-toolchain-eabi-4.5/bin/arm-eabi-"
 #^^^Not needed, I export CROSS_COMPILE before begining work, and this undoes my changes
 
-export KBUILD_BUILD_VERSION=$MODVER"."$BUILDVER"-talon-dev"
+export KBUILD_BUILD_VERSION="-"$MODVER"."$BUILDVER"-talon-dev"
 #changed to my personal build version
 
 #export LOCALVERSION="-I9000XWJVB-CL118186"
