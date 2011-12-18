@@ -1,8 +1,12 @@
 #include <linux/init.h>
 #include <linux/module.h>
 
+extern void s5pv210_change_high_1300(void);
 extern void s5pv210_change_high_1200(void);
+extern void s5pv210_change_high_1120(void);
 extern void s5pv210_change_high_1000(void);
+
+
 
 static int oc_init(void)
 {
