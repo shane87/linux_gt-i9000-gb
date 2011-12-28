@@ -1,7 +1,7 @@
 # Voodoo lagfix extension
 
 name='secure su binary for Superuser apk'
-source='/voodoo/extensions/su/su-3.0-efgh'
+source='/voodoo/extensions/su/su-3.0.3.2-efghi'
 dest='/system/xbin/su'
 
 extension_install_su()
