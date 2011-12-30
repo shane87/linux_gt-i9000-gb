@@ -9,7 +9,7 @@ fi
 # Linaro Android 4.5 (GCC 4.5.4) toolchain - http://www.linaro.org
 export CROSS_COMPILE="/home/shane87/android-toolchain-eabi/bin/arm-eabi-"
 
-export KBUILD_BUILD_VERSION="0.5.1-RC1-talon-dev"
+export KBUILD_BUILD_VERSION="s87-0.5.0.1-talon-dev"
 
 #export LOCALVERSION="-I9000XWJVB-CL118186"
 #export LOCALVERSION="-I9000XWJVH-CL184813"
